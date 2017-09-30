@@ -19,6 +19,8 @@ pipeline {
                         NGINX = "${BRANCH_NAME}-nginx"
                     }
                 }
+                checkout scm
+
                 stash name: 'everything',
                       includes: '**'
             }
