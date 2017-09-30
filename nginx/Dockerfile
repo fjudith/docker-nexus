@@ -4,6 +4,7 @@ LABEL maintainer="Florian JUDITH <florian.judith.b@gmail.com>"
 
 RUN apt-get update -yqq && apt-get install -yqq \
     openssl
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN rm -f /etc/nginx/conf.d/default.conf
 RUN rm -f /etc/nginx/conf.d/example_ssl.conf

@@ -12,10 +12,6 @@ services:
     - 8085:8085/tcp
   nexus-nginx:
     image: nginx
-    stdin_open: true
-    volumes:
-    - nexus-nginx-conf:/etc/nginx
-    tty: true
     links:
     - nexus:nexus
     ports:
