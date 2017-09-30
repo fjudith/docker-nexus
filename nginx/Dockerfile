@@ -1,0 +1,19 @@
+FROM nginx:stable
+
+LABEL maintainer="Florian JUDITH <florian.judith.b@gmail.com>"
+
+RUN apt-get update -yqq && apt-get install -yqq \
+    openssl
+
+RUN rm -f /etc/nginx/conf.d/default.conf
+RUN rm -f /etc/nginx/conf.d/example_ssl.conf
+
+COPY jenkins.conf /etc/nginx/conf.d/nexus.conf
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY docker-entrypoint.sh /
+RUN chmod +x docker-entrypoint.sh
+
+EXPOSE 80
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["nginx"]

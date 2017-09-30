@@ -1,0 +1,23 @@
+version: '2'
+services:
+  nexus:
+    image: sonatype/nexus3
+    volumes:
+    - nexus-data:/nexus-data
+    ports:
+    - 8081:8081/tcp
+    - 8082:8082/tcp
+    - 8083:8083/tcp
+    - 8084:8084/tcp
+    - 8085:8085/tcp
+  nexus-nginx:
+    image: nginx
+    stdin_open: true
+    volumes:
+    - nexus-nginx-conf:/etc/nginx
+    tty: true
+    links:
+    - nexus:nexus
+    ports:
+    - 80:80/tcp
+    - 443:443/tcp
