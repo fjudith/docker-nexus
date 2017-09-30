@@ -7,7 +7,7 @@ pipeline {
         REPO = 'fjudith/nexus'
     }
     stages {
-        stage ('Prepare') {
+        stage ('Checkout') {
             steps {
                 script {
                     if ("${BRANCH_NAME}" == "master"){
