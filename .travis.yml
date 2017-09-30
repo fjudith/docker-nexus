@@ -46,4 +46,4 @@ after_success:
   - docker tag $REPO:$COMMIT-nginx $REPO:travis-$TRAVIS_BUILD_NUMBER-nginx
   - docker tag $REPO:$COMMIT-nginx $REPO:$SLAVE
   - docker tag $REPO:$COMMIT-nginx $REPO:travis-$TRAVIS_BUILD_NUMBER-slave
-- docker push $REPO
+  - docker push $REPO
