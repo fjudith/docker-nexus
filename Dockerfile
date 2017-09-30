@@ -1,4 +1,4 @@
-FROM sornartype:nexus
+FROM sonartype/nexus3
 
 LABEL maintainer="Florian JUDITH <florian.judith.b@gmail.com>"
 
