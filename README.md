@@ -1,3 +1,4 @@
+[![](https://images.microbadger.com/badges/image/fjudith/nexus.svg)](https://microbadger.com/images/fjudith/nexus "Get your own image badge on microbadger.com")
 [![Build Status](https://travis-ci.org/fjudith/docker-nexus.svg?branch=master)](https://travis-ci.org/fjudith/docker-nexus)
 
 # Introduction
@@ -51,6 +52,10 @@ docker run -it --name="nexus-nginx" --link nexus:nexus -p 80:80 -p 443:443 fjudi
 Start a web browser session to http://ip or htts://ip
 
 # Environmnet variables
+
+### Nexus container
+
+
 
 ### Nginx container
 
