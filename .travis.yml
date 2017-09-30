@@ -22,7 +22,7 @@ before_install:
   - docker build -f Dockerfile -t $REPO:$COMMIT .
   - docker run -d --name 'nexus' $REPO:$COMMIT
   # Wait for nexus to start
-  - sleep 20
+  - sleep 60
   # Nginx build
   - docker build -f nginx/Dockerfile -t $REPO:$COMMIT-nginx nginx/
   - docker run -d --name 'nexus-nginx' --link nexus:nexus -p 32701:8080 $REPO:$COMMIT-nginx
@@ -35,7 +35,7 @@ script:
   - docker logs nexus-nginx
   # -i, --include – include protocol headers in the output (H/F)
   # -L, --follow – specify request  COMMAND (GET, PUT, DELETE…)  to use
-  - docker run --rm --link nexus-nginx:nginx phusion/baseimage /bin/bash -c "curl -i -L http://nginx:80"
+  - docker run --rm --link nexus-nginx:nginx phusion/baseimage /bin/bash -c "curl -ik -L http://nginx:80"
 
 
 after_success:
