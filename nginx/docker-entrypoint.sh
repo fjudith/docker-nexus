@@ -19,7 +19,7 @@ if ! [ -f $SSL_CERT_PATH/nginx.crt ] && [ "$LETS_ENCRYPT_ENABLED" == "true" ]; t
     
     pushd ${SSL_CERT_PATH}
     
-    openssl req -subj "/CN=${PUBLIC_DNS}\OU=${ORGANISATION_UNIT}\O=${ORGANISATION}\L=${CITY}\ST=${STATE}\C=${COUNTRY_CODE}" -newkey rsa:2048 -nodes -keyout $SSL_CERT_PATH/nginx.key -out $SSL_CERT_PATH/nginx.csr
+    openssl req -subj "/CN=${PUBLIC_DNS}/OU=${ORGANISATION_UNIT}/O=${ORGANISATION}/L=${CITY}/ST=${STATE}/C=${COUNTRY_CODE}" -newkey rsa:2048 -nodes -keyout $SSL_CERT_PATH/nginx.key -out $SSL_CERT_PATH/nginx.csr
     certbot certonly --csr $SSL_CERT_PATH/nginx.csr --standalone --register-unsafely-without-email --agree-tos
     mv 0001_chain.pem nginx.crt
     popd
@@ -28,7 +28,7 @@ fi
 if ! [ -f $SSL_CERT_PATH/nginx.crt ] && [ "$LETS_ENCRYPT_ENABLED" == "false" ]; then
     echo "Generating Self-Signed certificate"
 
-    openssl req -subj "/CN=${PUBLIC_DNS}\OU=${ORGANISATION_UNIT}\O=${ORGANISATION}\L=${CITY}\ST=${STATE}\C=${COUNTRY_CODE}" -new -newkey rsa:2048 -sha256 -days 3650 -nodes -x509 -keyout $SSL_CERT_PATH/nginx.key -out $SSL_CERT_PATH/nginx.crt
+    openssl req -subj "/CN=${PUBLIC_DNS}/OU=${ORGANISATION_UNIT}/O=${ORGANISATION}/L=${CITY}/ST=${STATE}/C=${COUNTRY_CODE}" -new -newkey rsa:2048 -sha256 -days 3650 -nodes -x509 -keyout $SSL_CERT_PATH/nginx.key -out $SSL_CERT_PATH/nginx.crt
 fi
 
 exec "$@"
