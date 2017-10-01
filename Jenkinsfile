@@ -5,6 +5,7 @@ pipeline {
     agent any
     environment {
         REPO = 'fjudith/nexus'
+        PRIVATE_REPO = "registry.economat-armees.fr/${REPO}"
     }
     stages {
         stage ('Checkout') {
@@ -19,7 +20,7 @@ pipeline {
                         NGINX = "${BRANCH_NAME}-nginx"
                     }
                 }
-                checkout scm
+                //checkout scm
 
                 stash name: 'everything',
                       includes: '**'
@@ -30,19 +31,21 @@ pipeline {
                 stage ('Nexus Application server') {
                     agent { label 'docker'}
                     steps {
-                        sh 'rm -rf *'
-                        unstash 'everything'
+                        //sh 'rm -rf *'
+                        //unstash 'everything'
                         sh 'tree -sh'
                         sh "docker build -f Dockerfile -t ${REPO}:${GIT_COMMIT} ."
+                        sh "docker tag ${REPO}:${GIT_COMMIT} ${REPO}:${BRANCH_NAME}"
                     }
                 }
                 stage ('Nexus Nginx server') {
                     agent { label 'docker'}
                     steps {
-                        sh 'rm -rf *'
-                        unstash 'everything'
+                        //sh 'rm -rf *'
+                        //unstash 'everything'
                         sh 'tree -sh'
                         sh "docker build -f nginx/Dockerfile -t ${REPO}:${GIT_COMMIT}-nginx nginx/"
+                        sh "docker tag ${REPO}:${GIT_COMMIT}-nginx ${REPO}:${NGINX}"
                     }
                 }
             }
