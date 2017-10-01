@@ -5,7 +5,7 @@ pipeline {
     agent any
     environment {
         REPO = 'fjudith/nexus'
-        PRIVATE_REPO = "registry.economat-armees.fr/${REPO}"
+        PRIVATE_REPO = "${PRIVATE_REGISTRY}/${REPO}"
     }
     stages {
         stage ('Checkout') {
