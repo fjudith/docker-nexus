@@ -22,8 +22,8 @@ pipeline {
                 }
                 //checkout scm
 
-                stash name: 'everything',
-                      includes: '**'
+                //stash name: 'everything',
+                //    includes: '**'
             }
         }
         stage ('Docker build'){
