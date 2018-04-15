@@ -1,4 +1,4 @@
-FROM sonatype/nexus3:3.7.1
+FROM sonatype/nexus3:3.10.0
 
 LABEL maintainer="Florian JUDITH <florian.judith.b@gmail.com>"
 

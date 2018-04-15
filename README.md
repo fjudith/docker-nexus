@@ -23,8 +23,8 @@ The Dockerfile builds from "sonatype/nexus3" and "nginx" images see:
 * https://hub.docker.com/u/sonatype/nexus3
 * https://hub.docker.com/u/_/nginx
 
-[3.7.1, latest](https://github.com/fjudith/docker-nexus/tree/3.7.1)
-[3.7.1, nginx](https://github.com/fjudith/docker-nexus/tree/3.7.1/nginx)
+[3.10.0, latest](https://github.com/fjudith/docker-nexus/tree/3.7.1)
+[3.10.0-nginx, nginx](https://github.com/fjudith/docker-nexus/tree/3.7.1/nginx)
 
 The nginx container stands as a Reverse proxy/SSL Terminator to Nexus in order route request to the docker registry based on the user-agent.
 
